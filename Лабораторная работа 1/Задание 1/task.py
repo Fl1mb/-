@@ -1,143 +1,136 @@
-# TODO: Подробно описать три произвольных класса
-
-
-
-# TODO: описать класс
-class Car:
-    def __init__(self, make: str, model: str, year: int):
+# Описание класса Земля
+class Earth:
+    def __init__(self, diameter: float, population: int):
         """
-        Инициализация автомобиля.
+        Инициализация планеты Земля.
 
-        :param make: Производитель автомобиля.
-        :param model: Модель автомобиля.
-        :param year: Год выпуска автомобиля. Должен быть не меньше 1886 (года первого автомобиля).
+        :param diameter: Диаметр Земли в километрах. Должен быть положительным числом.
+        :param population: Население Земли. Должно быть неотрицательным числом.
 
-        :raises ValueError: Если год меньше 1886.
+        :raises ValueError: Если диаметр не положительный или население отрицательное.
         """
-        if year < 1886:
-            raise ValueError("Год выпуска не может быть меньше 1886.")
-        self.make = make
-        self.model = model
-        self.year = year
+        if diameter <= 0:
+            raise ValueError("Диаметр Земли должен быть положительным числом.")
+        if population < 0:
+            raise ValueError("Население не может быть отрицательным.")
+        self.diameter = diameter
+        self.population = population
 
-    def get_car_info(self) -> str:
+    def get_info(self) -> str:
         """
-        Получить информацию об автомобиле.
+        Получить информацию о Земле.
 
-        :return: Строка с информацией об автомобиле.
+        :return: Строка с информацией о диаметре и населении Земли.
 
-        >>> car = Car("Toyota", "Camry", 2020)
-        >>> car.get_car_info()
-        'Toyota Camry, 2020'
+        >>> earth = Earth(12742, 7800000000)
+        >>> earth.get_info()
+        'Диаметр Земли: 12742 км, Население: 7800000000'
         """
-        return f"{self.make} {self.model}, {self.year}"
+        return f"Диаметр Земли: {self.diameter} км, Население: {self.population}"
 
-    def update_year(self, new_year: int) -> None:
+    def update_population(self, new_population: int) -> None:
         """
-        Обновить год выпуска автомобиля.
+        Обновить население Земли.
 
-        :param new_year: Новый год выпуска. Должен быть не меньше 1886.
+        :param new_population: Новое население. Должно быть неотрицательным числом.
 
-        :raises ValueError: Если новый год меньше 1886.
+        :raises ValueError: Если новое население отрицательное.
         """
-        if new_year < 1886:
-            raise ValueError("Год выпуска не может быть меньше 1886.")
-        self.year = new_year
+        if new_population < 0:
+            raise ValueError("Население не может быть отрицательным.")
+        self.population = new_population
 
 
-
-# TODO: описать ещё класс
-class Book:
-    def __init__(self, title: str, author: str, pages: int):
+# Описание класса Бутылка
+class Bottle:
+    def __init__(self, volume: float, material: str):
         """
-        Инициализация книги.
+        Инициализация бутылки.
 
-        :param title: Название книги.
-        :param author: Автор книги.
-        :param pages: Количество страниц в книге. Должно быть положительным числом.
+        :param volume: Объем бутылки в литрах. Должен быть положительным числом.
+        :param material: Материал бутылки (например, 'пластик', 'стекло').
 
-        :raises ValueError: Если количество страниц не положительное.
+        :raises ValueError: Если объем не положительный.
         """
-        if pages <= 0:
-            raise ValueError("Количество страниц должно быть положительным числом.")
-        self.title = title
-        self.author = author
-        self.pages = pages
+        if volume <= 0:
+            raise ValueError("Объем бутылки должен быть положительным числом.")
+        self.volume = volume
+        self.material = material
 
-    def get_summary(self) -> str:
+    def get_bottle_info(self) -> str:
         """
-        Получить краткое содержание книги.
+        Получить информацию о бутылке.
 
-        :return: Строка с названием и автором книги.
+        :return: Строка с информацией о объеме и материале бутылки.
 
-        >>> book = Book("1984", "George Orwell", 328)
-        >>> book.get_summary()
-        '1984 by George Orwell'
+        >>> bottle = Bottle(1.5, "пластик")
+        >>> bottle.get_bottle_info()
+        'Объем: 1.5 л, Материал: пластик'
         """
-        return f"{self.title} by {self.author}"
+        return f"Объем: {self.volume} л, Материал: {self.material}"
 
-    def read_pages(self, pages_to_read: int = 10) -> str:
+    def refill(self, additional_volume: float) -> None:
         """
-        Прочитать определенное количество страниц.
+        Заполнить бутылку дополнительным объемом.
 
-        :param pages_to_read: Количество страниц для чтения. Должно быть положительным числом.
+        :param additional_volume: Дополнительный объем в литрах. Должен быть положительным числом.
 
-        :raises ValueError: Если количество страниц для чтения не положительное.
-
-        :return: Строка с сообщением о прочитанных страницах.
-
-        >>> book = Book("1984", "George Orwell", 328)
-        >>> book.read_pages(20)
-        'Вы прочитали 20 страниц.'
+        :raises ValueError: Если дополнительный объем не положительный.
         """
-        if pages_to_read <= 0:
-            raise ValueError("Количество страниц для чтения должно быть положительным числом.")
-        return f"Вы прочитали {pages_to_read} страниц."
+        if additional_volume <= 0:
+            raise ValueError("Дополнительный объем должен быть положительным числом.")
+        self.volume += additional_volume
 
 
-# TODO: и ещё один
-
-class Tree:
-    def __init__(self, species: str, height: float, age: int):
+# Описание класса Лампа
+class Lamp:
+    def __init__(self, brightness: int, color: str):
         """
-        Инициализация дерева.
+        Инициализация лампы.
 
-        :param species: Вид дерева.
-        :param height: Высота дерева в метрах. Должна быть положительной.
-        :param age: Возраст дерева в годах. Должен быть неотрицательным.
+        :param brightness: Яркость лампы в люменах. Должна быть положительным числом.
+        :param color: Цвет света лампы (например, 'белый', 'желтый').
 
-        :raises ValueError: Если высота не положительная или возраст отрицательный.
+        :raises ValueError: Если яркость не положительная.
         """
-        if height <= 0:
-            raise ValueError("Высота дерева должна быть положительной.")
-        if age < 0:
-            raise ValueError("Возраст дерева не может быть отрицательным.")
-        self.species = species
-        self.height = height
-        self.age = age
+        if brightness <= 0:
+            raise ValueError("Яркость лампы должна быть положительным числом.")
+        self.brightness = brightness
+        self.color = color
+        self.is_on = False  # Лампа изначально выключена
 
-    def grow(self, growth: float) -> None:
+    def turn_on(self) -> None:
         """
-        Увеличить высоту дерева.
-
-        :param growth: Увеличение высоты в метрах. Должно быть положительным числом.
-
-        :raises ValueError: Если увеличение высоты не положительное.
+        Включить лампу.
         """
-        if growth <= 0:
-            raise ValueError("Увеличение высоты должно быть положительным числом.")
-        self.height += growth
+        self.is_on = True
 
-    def get_tree_info(self) -> str:
+    def turn_off(self) -> None:
         """
-        Получить информацию о дереве.
-
-        :return: Строка с информацией о дереве.
-
-        >>> tree = Tree("Oak", 5.0, 10)
-        >>> tree.get_tree_info()
-        'Вид: Oak, Высота: 5.0 м, Возраст: 10 лет'
+        Выключить лампу.
         """
-        return f"Вид: {self.species}, Высота: {self.height} м, Возраст: {self.age} лет"
+        self.is_on = False
 
+    def get_info(self) -> str:
+        """
+        Получить информацию о лампе.
 
+        :return: Строка с информацией о яркости, цвете и состоянии лампы.
+
+        >>> lamp = Lamp(800, "белый")
+        >>> lamp.get_info()
+        'Яркость: 800 люмен, Цвет: белый, Включена: False'
+        """
+        return f"Яркость: {self.brightness} люмен, Цвет: {self.color}, Включена: {self.is_on}"
+
+    def set_brightness(self, new_brightness: int) -> None:
+        """
+        Установить новую яркость лампы.
+
+        :param new_brightness: Новая яркость в люменах. Должна быть положительным числом.
+
+        :raises ValueError: Если новая яркость не положительная.
+        """
+        if new_brightness <= 0:
+            raise ValueError("Яркость лампы должна быть положительным числом.")
+        self.brightness = new_brightness

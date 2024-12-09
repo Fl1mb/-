@@ -1,26 +1,27 @@
-from task_1 import Car, Tree, Book
+from task_1 import  Bottle, Earth, Lamp
 # TODO: импортируйте классы, созданные в ходе выполнения прошлого задания
 
 if __name__ == "__main__":
  # TODO: инстанцировать все описанные классы, создав три объекта.C()
-    book = Book("1984", "George Orwell", 328)
-    car = Car("Toyota", "Camry", 2020)
-    tree = Tree("Oak", 5.0, 10)
+    bottle = Bottle(0.5, "Alum")
+    earth = Earth(6000, 800000000)
+    lamp = Lamp(15, "White")
     try:
      # TODO: вызвать метод с некорректными аргументами(b)
-        car.update_year("str")
-    except TypeError:
+        print(earth.get_info())
+        earth.update_population(-3123123)
+    except ValueError:
         print('Ошибка: неправильные данные')
-
     try:
      # TODO: вызвать метод с некорректными аргументами(a)
-        new_book = Book("C++", "Бьёрн Страуструп", -132)
-
+        print(bottle.get_bottle_info())
+        bottle.refill(-1)
     except ValueError:
         print('Ошибка: неправильные данные')
 
     try:
      # TODO: вызвать метод с некорректными аргументами(a)
-        tree.grow(-4123)
+        print(lamp.get_info())
+        lamp.set_brightness(-213)
     except ValueError:
         print('Ошибка: неправильные данные')
