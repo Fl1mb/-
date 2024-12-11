@@ -28,7 +28,7 @@ class Earth:
         """
         return f"Диаметр Земли: {self.diameter} км, Население: {self.population}"
 
-    def update_population(self, new_population: int) -> None:
+    def update_population(self, new_population = 0) -> None:
         """
         Обновить население Земли.
 
@@ -36,7 +36,7 @@ class Earth:
 
         :raises ValueError: Если новое население отрицательное.
         """
-        if new_population < 0:
+        if new_population < 0 or not isinstance(new_population, int):
             raise ValueError("Население не может быть отрицательным.")
         self.population = new_population
 
@@ -123,7 +123,7 @@ class Lamp:
         """
         return f"Яркость: {self.brightness} люмен, Цвет: {self.color}, Включена: {self.is_on}"
 
-    def set_brightness(self, new_brightness: int) -> None:
+    def set_brightness(self, new_brightness = 1) -> None:
         """
         Установить новую яркость лампы.
 
@@ -131,6 +131,6 @@ class Lamp:
 
         :raises ValueError: Если новая яркость не положительная.
         """
-        if new_brightness <= 0:
+        if new_brightness <= 0 or not isinstance(new_brightness, int):
             raise ValueError("Яркость лампы должна быть положительным числом.")
         self.brightness = new_brightness
