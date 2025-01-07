@@ -26,6 +26,8 @@ class Animal:
         self._weight = weight
         self._gender = gender
 
+    # Базовые геттеры и сеттеры
+    # Они наследуются
     @property
     def age(self) -> int:
         """Получить возраст животного."""
@@ -83,6 +85,7 @@ class Animal:
         """Представление животного для отладки."""
         return f'{self.__class__.__name__}(age={self.age}, weight={self.weight}, gender={self.gender})'
 
+    # Базовый метод (в наследнике без изменений)
     def age_in_months(self) -> int:
         """Получить возраст животного в месяцах."""
         return self.age * 12
@@ -97,7 +100,7 @@ class Horse(Animal):
         _breed (str): Порода лошади. Должен быть непубличным, чтобы предотвратить
                       случайное изменение извне.
     """
-
+    # Переопределенный метод инициализации (перегружен)
     def __init__(self, age: int, weight: float, gender: str, breed: str):
         """
         Инициализация атрибутов лошади.
@@ -116,10 +119,12 @@ class Horse(Animal):
         """Получить породу лошади."""
         return self._breed
 
+    # Перегруженный метод __str__
     def __str__(self) -> str:
         """Строковое представление лошади с указанием породы."""
         return f'I am a {self.breed} horse. I am {self.age} years old and I am {self.gender}.'
 
+    # Перегруженный метод __repr__
     def __repr__(self) -> str:
         """Представление лошади для отладки."""
         return f'{self.__class__.__name__}(age={self.age}, weight={self.weight}, gender={self.gender}, breed={self.breed})'
